@@ -20,16 +20,13 @@ func factorial(someInt: Int) -> Int {
 
     if someInt == 1 {
         returnValue = 1
-    } else if someInt == -1 {
-        returnValue = -1
-    } else if someInt > 1 {
-        returnValue = factorial(someInt: (someInt - 1)) * someInt
     } else if someInt == 0 {
         returnValue = 1
+    } else if someInt < 0 {
+        returnValue = -1
     } else {
-        returnValue = factorial(someInt: (someInt + 1)) * someInt
+        returnValue = factorial(someInt: (someInt - 1)) * someInt
     }
-
     return returnValue
 
 }
@@ -48,9 +45,11 @@ do {
     }
 
     let factorialResult: Int = (factorial(someInt: number))
-
-    print("The factorial is: ", factorialResult)
-
+    if factorialResult < 0 {
+        print("No negative numbers")
+    } else {
+        print("The factorial is: ", factorialResult)
+    }
 } catch {
     print("That was an invalid input")
 }
